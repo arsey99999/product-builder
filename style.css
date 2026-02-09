@@ -483,8 +483,8 @@ a {
   padding: 14px;
   font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.9rem;
-  color: var(--text-0);
-  -webkit-text-fill-color: var(--text-0);
+  color: transparent;
+  -webkit-text-fill-color: transparent;
   resize: vertical;
   min-height: 140px;
   line-height: 1.6;
@@ -674,4 +674,7 @@ a {
     gap: 12px;
     align-items: flex-start;
   }
+}
+.typing-input::placeholder {
+  color: transparent;
 }
