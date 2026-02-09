@@ -89,6 +89,43 @@ print(monthly.tail())`,
   },
 };
 
+const themeToggle = document.getElementById("theme-toggle");
+const sunIcon = document.getElementById("sun-icon");
+const moonIcon = document.getElementById("moon-icon");
+const body = document.body;
+
+function setTheme(theme) {
+  body.setAttribute("data-theme", theme);
+  localStorage.setItem("theme", theme);
+  if (theme === "dark") {
+    sunIcon.classList.remove("hidden");
+    moonIcon.classList.add("hidden");
+  } else {
+    sunIcon.classList.add("hidden");
+    moonIcon.classList.remove("hidden");
+  }
+}
+
+function toggleTheme() {
+  const currentTheme = body.getAttribute("data-theme");
+  const newTheme = currentTheme === "dark" ? "light" : "dark";
+  setTheme(newTheme);
+}
+
+// Apply saved theme or detect system preference on load
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme) {
+  setTheme(savedTheme);
+} else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) {
+  setTheme("light");
+} else {
+  setTheme("dark"); // Default to dark if no preference and not light system preference
+}
+
+if (themeToggle) {
+  themeToggle.addEventListener("click", toggleTheme);
+}
+
 const heroTitle = document.getElementById("snippet-title");
 const heroCode = document.getElementById("snippet-code");
 const practiceTitle = document.getElementById("practice-title");
