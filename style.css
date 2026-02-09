@@ -21,6 +21,14 @@
   --code-text-color: #d6f5ff;
   --code-bg: rgba(12, 15, 32, 0.7);
   --code-border: rgba(47, 55, 86, 0.6);
+  --typing-input-bg: rgba(8, 10, 22, 0.9);
+  --typing-input-border: rgba(47, 55, 86, 0.8);
+  --typing-input-caret: var(--accent-2);
+  --typing-visual-correct: var(--text-0);
+  --typing-visual-wrong: #ff6b6b;
+  --typing-visual-pending: rgba(255, 255, 255, 0.35);
+  --featured-card-bg: linear-gradient(160deg, #2a213b, #171b2e);
+  --featured-card-border: rgba(255, 140, 66, 0.6);
 }
 
 [data-theme='light'] {
@@ -44,6 +52,14 @@
   --code-text-color: #1a202c;
   --code-bg: rgba(240, 242, 245, 0.7);
   --code-border: rgba(209, 213, 219, 0.6);
+  --typing-input-bg: #ffffff;
+  --typing-input-border: #d1d5db;
+  --typing-input-caret: var(--accent-1);
+  --typing-visual-correct: var(--text-0);
+  --typing-visual-wrong: #ef4444;
+  --typing-visual-pending: #9ca3af;
+  --featured-card-bg: linear-gradient(160deg, var(--accent-2), var(--accent-1));
+  --featured-card-border: var(--accent-1);
 }
 
 * {
@@ -467,14 +483,14 @@ a {
   padding: 14px;
   font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.9rem;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
+  color: var(--text-0);
+  -webkit-text-fill-color: var(--text-0);
   resize: vertical;
   min-height: 140px;
   line-height: 1.6;
   position: relative;
   z-index: 2;
-  caret-color: var(--accent-2);
+  caret-color: var(--typing-input-caret);
 }
 
 .typing-input:focus {
@@ -483,8 +499,8 @@ a {
 
 .typing-input-wrap {
   position: relative;
-  background: rgba(8, 10, 22, 0.9);
-  border: 1px solid rgba(47, 55, 86, 0.8);
+  background: var(--typing-input-bg);
+  border: 1px solid var(--typing-input-border);
   border-radius: 14px;
   overflow: hidden;
 }
@@ -509,15 +525,15 @@ a {
 }
 
 .typing-visual .correct {
-  color: var(--text-0);
+  color: var(--typing-visual-correct);
 }
 
 .typing-visual .wrong {
-  color: #ff6b6b;
+  color: var(--typing-visual-wrong);
 }
 
 .typing-visual .pending {
-  color: rgba(255, 255, 255, 0.35);
+  color: var(--typing-visual-pending);
 }
 
 .typing-visual .space {
@@ -605,8 +621,8 @@ a {
 }
 
 .price-card.featured {
-  background: linear-gradient(160deg, #2a213b, #171b2e);
-  border-color: rgba(255, 140, 66, 0.6);
+  background: var(--featured-card-bg);
+  border-color: var(--featured-card-border);
   box-shadow: var(--shadow);
 }
 
