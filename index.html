@@ -1,14 +1,221 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+  <title>TypeWise — Developer Typing Practice</title>
+  <link href="/style.css" rel="stylesheet" />
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand-mark">TW</span>
+      <span class="brand-text">TypeWise</span>
+    </div>
+    <nav class="nav">
+      <a href="#modes">연습 모드</a>
+      <a href="#practice">연습 코드</a>
+      <a href="#pricing">플랜</a>
+    </nav>
+    <button class="btn btn-ghost" id="cta-top">시작하기</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-left">
+        <p class="eyebrow">Developer Typing Practice</p>
+        <h1>
+          개발자를 위한
+          <span class="accent">코드 타자연습</span>
+        </h1>
+        <p class="subtext">
+          Python, Java, SQL, JavaScript, React, Pandas까지. 실제 코드 조각과 쿼리를
+          따라 치면서 속도와 정확도를 동시에 키우세요.
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" id="cta-hero">연습 시작</button>
+          <button class="btn btn-outline" id="cta-sample">지금 바로 typing!</button>
+        </div>
+        <p class="hero-hint">아래의 오늘의 연습 코드로 바로 이동합니다.</p>
+        <div class="stats">
+          <div>
+            <span class="stat-value">120+</span>
+            <span class="stat-label">실전 코드</span>
+          </div>
+          <div>
+            <span class="stat-value">7</span>
+            <span class="stat-label">언어 트랙</span>
+          </div>
+          <div>
+            <span class="stat-value">A+</span>
+            <span class="stat-label">정확도 분석</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="device">
+          <div class="device-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="device-title">TypeWise Playground</span>
+          </div>
+          <div class="device-body">
+            <div class="code-meta">
+              <span id="snippet-title">Python · 데이터 정제</span>
+              <span class="kbd">TAB</span>
+            </div>
+            <pre class="code-block" id="snippet-code"></pre>
+            <div class="typing-line">
+              <span class="prompt">You:</span>
+              <span class="ghost">df["price"] = df["price"].fillna(0)</span>
+              <span class="caret"></span>
+            </div>
+          </div>
+        </div>
+        <div class="floating-cards">
+          <div class="float-card">SQL · 조인 최적화</div>
+          <div class="float-card">React · 훅 패턴</div>
+          <div class="float-card">Pandas · 시계열</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="modes" id="modes">
+      <h2>연습 모드</h2>
+      <p class="section-subtext">개발 현장에서 바로 쓰는 패턴으로 구성했어요.</p>
+      <div class="mode-grid">
+        <article class="mode-card">
+          <h3>Language Drills</h3>
+          <p>Python, Java, JavaScript 기본 문법을 속도감 있게 반복.</p>
+        </article>
+        <article class="mode-card">
+          <h3>SQL Missions</h3>
+          <p>JOIN, WINDOW, CTE 쿼리를 실제 데이터 문제로 연습.</p>
+        </article>
+        <article class="mode-card">
+          <h3>Framework Routines</h3>
+          <p>React 컴포넌트, 훅, 상태 관리 패턴을 타이핑.</p>
+        </article>
+        <article class="mode-card">
+          <h3>Data Tasks</h3>
+          <p>Pandas 전처리, 피벗, 시계열 패턴을 따라 치기.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="practice" id="practice">
+      <div class="practice-header">
+        <h2>오늘의 연습 코드</h2>
+        <p class="section-subtext">언어를 선택하면 코드 예제가 바뀝니다.</p>
+      </div>
+      <div class="chips" id="language-chips">
+        <button class="chip active" data-lang="python">Python</button>
+        <button class="chip" data-lang="java">Java</button>
+        <button class="chip" data-lang="sql">SQL</button>
+        <button class="chip" data-lang="js">JavaScript</button>
+        <button class="chip" data-lang="react">React</button>
+        <button class="chip" data-lang="pandas">Pandas</button>
+      </div>
+      <div class="practice-grid">
+        <div class="practice-card">
+          <div class="practice-title">
+            <span id="practice-title">Python · 데이터 정제</span>
+            <span class="badge">Warm-up</span>
+          </div>
+          <pre class="practice-code" id="practice-code"></pre>
+          <div class="typing-panel">
+            <label class="typing-label" for="typing-input">지금 바로 typing!</label>
+            <p class="typing-help">공백은 · 로 표시됩니다.</p>
+            <div class="typing-input-wrap">
+              <div class="typing-visual" id="typing-visual" aria-hidden="true"></div>
+              <textarea id="typing-input" class="typing-input" rows="6" placeholder="여기에 그대로 따라 입력하세요."></textarea>
+            </div>
+            <div class="typing-feedback">
+              <div class="feedback-line">
+                <span class="feedback-label">진행률</span>
+                <span class="feedback-value" id="progress-text">0%</span>
+              </div>
+              <div class="feedback-line">
+                <span class="feedback-label">오타</span>
+                <span class="feedback-value" id="mistake-count">0</span>
+              </div>
+            </div>
+            <div class="typing-actions">
+              <button class="btn btn-outline" id="reset-typing">초기화</button>
+              <button class="btn btn-primary" id="next-snippet">다음 예제</button>
+            </div>
+          </div>
+          <div class="practice-footer">
+            <span>목표 정확도 98%</span>
+            <button class="btn btn-primary">이 예제 시작</button>
+          </div>
+        </div>
+        <div class="practice-card metrics">
+          <h3>실시간 피드백</h3>
+          <div class="metric-row">
+            <span>실시간 WPM</span>
+            <span class="metric-value" id="metric-wpm-live">0</span>
+          </div>
+          <div class="metric-row">
+            <span>전체 WPM</span>
+            <span class="metric-value" id="metric-wpm-total">0</span>
+          </div>
+          <div class="metric-row">
+            <span>분당타수</span>
+            <span class="metric-value" id="metric-cpm">0</span>
+          </div>
+          <div class="metric-row">
+            <span>정확도</span>
+            <span class="metric-value" id="metric-accuracy">100%</span>
+          </div>
+          <div class="metric-row">
+            <span>실수 패턴</span>
+            <span class="metric-value" id="metric-pattern">-</span>
+          </div>
+          <div class="progress">
+            <div class="progress-bar" id="metric-progress"></div>
+          </div>
+          <p class="hint" id="metric-hint">오타 패턴을 모아 다음 연습을 자동 추천합니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+      <h2>플랜</h2>
+      <p class="section-subtext">혼자 연습하거나 팀과 함께 써보세요.</p>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <h3>Free</h3>
+          <p class="price">$0</p>
+          <p>기본 언어 코드 예제 30개</p>
+          <button class="btn btn-outline">시작하기</button>
+        </div>
+        <div class="price-card featured">
+          <h3>Pro</h3>
+          <p class="price">$8</p>
+          <p>전체 코드 예제 + 분석 리포트</p>
+          <button class="btn btn-primary">14일 무료 체험</button>
+        </div>
+        <div class="price-card">
+          <h3>Team</h3>
+          <p class="price">$22</p>
+          <p>팀 대시보드 + 커스텀 코드 예제</p>
+          <button class="btn btn-outline">문의하기</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>TypeWise · 개발자 타자연습의 표준</p>
+    <div class="footer-links">
+      <a href="#">문의</a>
+      <a href="#">개인정보</a>
+      <a href="#">가이드</a>
+    </div>
+  </footer>
+
   <script defer type="text/javascript" src="/main.js"></script>
 </body>
 </html>
